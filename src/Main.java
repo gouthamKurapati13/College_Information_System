@@ -1,18 +1,13 @@
 import java.util.Scanner;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
 
-    static void showMenu() {
-        System.out.println("\n\nCHOICES : ");
-        System.out.println("1. Enter a record into Teaching DB");
-        System.out.println("2. Display Teaching Employee details from DB");
-        System.out.println("3. Show all teaching Employees details");
-        System.out.println("4. Enter a record into Non-Teaching DB");
-        System.out.println("5. Display Non-Teaching Employee details from DB");
-        System.out.println("6. Show all non-teaching Employees details");
-        System.out.println("7. Exit");
+    static void mainMenu() {
+        System.out.println("\n\nMAIN MENU : ");
+        System.out.println("1. Access Employees Section");
+        System.out.println("2. Access Courses Section");
+        System.out.println("3. Display Complete College Information");
+        System.out.println("4. Exit");
     }
 
     public static void main(String[] args) {
@@ -28,36 +23,24 @@ public class Main {
         do {
             System.out.print("\nType something and press enter to continue...");
             scan.next();
-            showMenu();
+            mainMenu();
             System.out.print("\nEnter your choice : ");
             ch = scan.nextInt();
             switch(ch) {
                 case 1:
-                    new Teaching();
+                    Employee.operations();
                     break;
                 case 2:
-                    System.out.print("Enter EmpID : ");
-                    Teaching.displayInfo(scan.nextInt());
+                    Courses.operations();
                     break;
                 case 3:
+                    System.out.println("\n-----COLLEGE INFORMATION SYSTEM-----\n\n");
                     College.showCollegeInfo();
-                    System.out.println("\n--- Teaching Employees Information ---\n");
-                    Teaching.displayAll();
+                    Employee.displayAll();
+                    Courses.displayAll();
                     break;
                 case 4:
-                    new NonTeaching();
-                    break;
-                case 5:
-                    System.out.print("Enter EmpID : ");
-                    NonTeaching.displayInfo(scan.nextInt());
-                    break;
-                case 6:
-                    College.showCollegeInfo();
-                    System.out.println("\n--- Non-Teaching Employees Information ---\n");
-                    NonTeaching.displayAll();
-                    break;
-                case 7:
-                    System.out.print("Enter 7 again to confirm exiting the application : ");
+                    System.out.print("Enter 4 again to confirm exiting the application : ");
                     ch = scan.nextInt();
                     if (ch==4)
                         System.out.println("Closing application...");
@@ -65,6 +48,6 @@ public class Main {
                 default:
                     System.out.println("Invalid Input : Please enter a valid choice from the following choices.");
             }
-        } while(ch!=7);
+        } while(ch!=4);
     }
 }
